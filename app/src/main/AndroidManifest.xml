@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.e_doctor">
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EDoctor">
-        <activity android:name=".Medicament_Activity"></activity>
+        <activity android:name=".Health_Care_Activity"></activity>
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".NotificationPane" />
+        <activity android:name=".Medicament_Activity" />
         <activity android:name=".About_Activity" />
         <activity android:name=".Register_Activity" />
         <activity android:name=".Login_Acticity" />

@@ -24,14 +24,14 @@ public class Register_Activity extends AppCompatActivity {
         about1=findViewById(R.id.textView2_about);
         about1.setPaintFlags(about1.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-       /* B1.setOnClickListener(new View.OnClickListener() {
+        B1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(Register_Activity.this,Login_Acticity.class);
+                Intent intent1=new Intent(Register_Activity.this,MainActivity2.class);
                 startActivity(intent1);
                 finish();
             }
-        });*/
+        });
 
         B2.setOnClickListener(new View.OnClickListener() {
             @Override
