@@ -4,83 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f688bb"
+    android:background="@mipmap/background_main_foreground"
     tools:context=".MainActivity2">
 
     <TextView
         android:id="@+id/about_Main"
         android:layout_width="88dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/arbutus_slab"
         android:text="About"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2_Main"
-        android:layout_width="366dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/bilbo_swash_caps"
+        android:layout_width="364dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="320dp"
+        android:fontFamily="@font/amarante"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_Main"
-        tools:text="Download rather than visit your doctor" />
+        android:text="If you are a doctor, let us perform the first checkup for you" />
 
     <ImageView
         android:id="@+id/image_Main"
-        android:layout_width="186dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="112dp"
+        android:layout_width="236dp"
+        android:layout_height="99dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/login" />
 
     <TextView
         android:id="@+id/textView_Main"
-        android:layout_width="366dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/bilbo_swash_caps"
+        android:layout_width="361dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/amarante"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_Main"
-        tools:text="Allow us to remember pill time for you" />
+        android:text="Allow us to remember pill time for you" />
 
     <Button
         android:id="@+id/button1_Main"
         android:layout_width="194dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#5E60CE"
         android:text="Health check"
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2_Main"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button2_Main"
         android:layout_width="194dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="#7400B8"
         android:text="Set a reminder"
         app:cornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView2_Main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Main"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

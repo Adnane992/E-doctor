@@ -4,85 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Acticity"
+    tools:context=".Login_Activity"
     android:background="@color/login1"
     >
 
+
     <ImageView
         android:id="@+id/Login_Pi"
-        android:layout_width="228dp"
-        android:layout_height="170dp"
+        android:layout_width="304dp"
+        android:layout_height="237dp"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
+        app:layout_constraintVertical_bias="0.123"
         app:srcCompat="@mipmap/login" />
 
     <EditText
         android:id="@+id/User_Login"
         android:layout_width="253dp"
         android:layout_height="65dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="368dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="332dp"
+        android:backgroundTint="#E0AAFF"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
-        android:hint="UserName"
+        android:hint="Username"
         android:inputType="textPersonName"
+        android:textColor="#3B021C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Login_Pi"
-        app:layout_constraintVertical_bias="0.773" />
-
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/Mdp_Login"
         android:layout_width="253dp"
         android:layout_height="65dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="240dp"
+        android:backgroundTint="#E0AAFF"
         android:drawableLeft="@drawable/ic_action_mdp"
         android:ems="10"
-        android:hint="PassWord"
+        android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#3B021C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/User_Login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="271dp"
-        android:layout_height="74dp"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
         android:layout_marginBottom="152dp"
-        android:text="Connect"
-        app:cornerRadius="30dp"
+        android:backgroundTint="#E0AAFF"
+        android:text="Login  >>"
+        android:textColor="#10002B"
+        app:cornerRadius="20px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mdp_Login"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/Register_login"
-        android:layout_width="182dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="72dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:text="NEW USER? SIGN UP"
-        android:textAlignment="center"
-        android:textSize="18sp"
+    <Button
+        android:id="@+id/button_Register"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="152dp"
+        android:backgroundTint="#10002B"
+        android:text="@string/register"
+        android:textColor="#E0AAFF"
+        app:cornerRadius="20px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mdp_Login"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView1_about"
         android:layout_width="88dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/arbutus_slab"
         android:text="About"
         android:textAlignment="center"

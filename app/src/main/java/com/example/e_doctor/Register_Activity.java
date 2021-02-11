@@ -36,7 +36,7 @@ public class Register_Activity extends AppCompatActivity {
         B2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2=new Intent(Register_Activity.this,Login_Acticity.class);
+                Intent intent2=new Intent(Register_Activity.this, Login_Activity.class);
                 startActivity(intent2);
                 finish();
             }
