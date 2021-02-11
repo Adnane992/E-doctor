@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/Login_Pi"
-        android:layout_width="304dp"
-        android:layout_height="237dp"
+        android:layout_width="343dp"
+        android:layout_height="248dp"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         android:id="@+id/Mdp_Login"
         android:layout_width="253dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="260dp"
         android:backgroundTint="#E0AAFF"
         android:drawableLeft="@drawable/ic_action_mdp"
         android:ems="10"
@@ -62,15 +62,15 @@
         android:layout_marginTop="26dp"
         android:layout_marginBottom="152dp"
         android:backgroundTint="#E0AAFF"
-        android:text="Login  >>"
+        android:text="Login   >>"
         android:textColor="#10002B"
         app:cornerRadius="20px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.867"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Mdp_Login"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <Button
         android:id="@+id/button_Register"
@@ -84,20 +84,21 @@
         app:cornerRadius="20px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Mdp_Login"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <TextView
         android:id="@+id/textView1_about"
-        android:layout_width="88dp"
-        android:layout_height="39dp"
+        android:layout_width="77dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="@font/arbutus_slab"
+        android:fontFamily="@font/archivo_black"
         android:text="About"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textColor="#3E3B3B"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

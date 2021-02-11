@@ -9,14 +9,14 @@
 
     <TextView
         android:id="@+id/about_Main"
-        android:layout_width="88dp"
-        android:layout_height="39dp"
+        android:layout_width="83dp"
+        android:layout_height="29dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="@font/arbutus_slab"
+        android:fontFamily="@font/archivo_black"
         android:text="About"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:textColor="#3E3B3B"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,43 +24,44 @@
 
     <TextView
         android:id="@+id/textView2_Main"
-        android:layout_width="364dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="320dp"
-        android:fontFamily="@font/amarante"
+        android:layout_width="359dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="256dp"
+        android:fontFamily="@font/arbutus_slab"
+        android:text="If you are a doctor, let us perform the first checkup for you"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textColor="#DDD4D4"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_Main"
-        android:text="If you are a doctor, let us perform the first checkup for you" />
+        app:layout_constraintTop_toBottomOf="@+id/image_Main" />
 
     <ImageView
         android:id="@+id/image_Main"
-        android:layout_width="236dp"
-        android:layout_height="99dp"
+        android:layout_width="238dp"
+        android:layout_height="117dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@mipmap/login" />
 
     <TextView
         android:id="@+id/textView_Main"
-        android:layout_width="361dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="84dp"
-        android:fontFamily="@font/amarante"
+        android:layout_width="363dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="136dp"
+        android:fontFamily="@font/arbutus_slab"
+        android:text="Allow us to remember pill time for you"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textColor="#DDD4D4"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_Main"
-        android:text="Allow us to remember pill time for you" />
+        app:layout_constraintTop_toBottomOf="@+id/image_Main" />
 
     <Button
         android:id="@+id/button1_Main"
@@ -69,13 +70,14 @@
         android:layout_marginTop="2dp"
         android:backgroundTint="#5E60CE"
         android:text="Health check"
-        app:cornerRadius="24dp"
+        android:textStyle="bold"
+        app:cornerRadius="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2_Main"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/button2_Main"
@@ -84,7 +86,8 @@
         android:layout_marginTop="7dp"
         android:backgroundTint="#7400B8"
         android:text="Set a reminder"
-        app:cornerRadius="24dp"
+        android:textStyle="bold"
+        app:cornerRadius="10px"
         app:layout_constraintBottom_toTopOf="@+id/textView2_Main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

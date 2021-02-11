@@ -2,12 +2,14 @@ package com.example.e_doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,10 @@ public class Login_Activity extends AppCompatActivity {
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialog pd=new ProgressDialog(Login_Activity.this);
+                pd.setTitle("Login");
+                pd.setMessage("please wait while we log you in");
+                pd.setCancelable(false);
                 String operation="login";
                 String username=Username.getText().toString().trim();
                 String password=Password.getText().toString().trim();
@@ -49,11 +55,13 @@ public class Login_Activity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Toast.makeText(Login_Activity.this, response, Toast.LENGTH_SHORT).show();
                                 if (response.equals("success")) {
                                     Intent intent_connect = new Intent(Login_Activity.this, MainActivity2.class);
                                     startActivity(intent_connect);
                                     finish();
+                                }
+                                else{
+                                    Toast.makeText(Login_Activity.this, response, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         },
