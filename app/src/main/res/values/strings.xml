@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">E-Doctor</string>
-    <string name="register"><![CDATA[<<   Register]]></string>
+    <string name="register"><![CDATA[<<]]>&#032; &#032; Register</string>
 </resources>

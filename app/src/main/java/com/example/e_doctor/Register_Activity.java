@@ -17,7 +17,6 @@ public class Register_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_);
-        getSupportActionBar().hide();
 
         B1=findViewById(R.id.button1_Regi);
         B2=findViewById(R.id.button2_Regi);

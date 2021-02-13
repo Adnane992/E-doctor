@@ -4,32 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#A80808"
     tools:context=".About_Activity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-16dp">
+        android:background="#e2c6ff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="#e2c6ff"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="24dp"
                 android:text="By who ?"
                 android:textColor="#B5179E"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.489"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -51,8 +54,9 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/arbutus_slab"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#ECF6FE"
+                android:fontFamily="@font/bubblegum_sans"
                 android:text="E-doctor android mobile application was created by two computer science engineering students @Noureddine Aitzaanane and @Adnane Amine as an academic project,the idea came from their will to help patients and doctors at the same level. "
                 android:textAlignment="center"
                 android:textColor="#3A0CA3"
@@ -67,7 +71,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/arbutus_slab"
+                android:backgroundTint="#ECF6FE"
+                android:fontFamily="@font/bubblegum_sans"
                 android:text="Patients/non professionals can use it to set reminders for their medication time or to do a primary medical checkup by completing the questionnaire.   Doctors can use this app by assigning to it the task of primary checkups  with their new patients in order to save them some time and give them more optimal results."
                 android:textAlignment="center"
                 android:textColor="#3A0CA3"
@@ -90,5 +95,17 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/copyrightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="copyright"
+        android:textColor="#7E8181"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

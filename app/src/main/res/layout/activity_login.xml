@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/Login_Pi"
-        android:layout_width="343dp"
-        android:layout_height="248dp"
+        android:layout_width="319dp"
+        android:layout_height="236dp"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

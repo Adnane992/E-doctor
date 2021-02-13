@@ -15,7 +15,6 @@ public class Medicament_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_medicament_);
-        getSupportActionBar().hide();
 
         about3=findViewById(R.id.about_Notif);
         about3.setPaintFlags(about3.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
