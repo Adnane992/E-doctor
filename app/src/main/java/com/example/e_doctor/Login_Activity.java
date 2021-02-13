@@ -50,7 +50,7 @@ public class Login_Activity extends AppCompatActivity {
                 String operation="login";
                 String username=Username.getText().toString().trim();
                 String password=Password.getText().toString().trim();
-                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
+                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.106/E-doctor.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -92,7 +92,7 @@ public class Login_Activity extends AppCompatActivity {
                 String password = Password.getText().toString().trim();
                 if(!username.isEmpty() && !password.isEmpty()){
                     String operation = "insert";
-                    StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
+                    StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.106/E-doctor.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
