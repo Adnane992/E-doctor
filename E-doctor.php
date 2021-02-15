@@ -51,6 +51,4 @@ else{
         
         $statement->close();
     }
-
-    
 }

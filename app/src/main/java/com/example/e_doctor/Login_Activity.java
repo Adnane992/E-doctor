@@ -6,9 +6,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +29,9 @@ import java.util.Map;
 public class Login_Activity extends AppCompatActivity {
     TextView Register,about;
     Button connect,regis;
+    ImageButton showHide;
     EditText Username,Password;
+    static boolean hiddenPassword=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class Login_Activity extends AppCompatActivity {
         about=findViewById(R.id.textView1_about);
         Username=findViewById(R.id.User_Login);
         Password=findViewById(R.id.Mdp_Login);
+        showHide=findViewById(R.id.showHide);
         about.setPaintFlags(about.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         connect.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +56,7 @@ public class Login_Activity extends AppCompatActivity {
                 String operation="login";
                 String username=Username.getText().toString().trim();
                 String password=Password.getText().toString().trim();
-                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.106/E-doctor.php",
+                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -92,7 +98,7 @@ public class Login_Activity extends AppCompatActivity {
                 String password = Password.getText().toString().trim();
                 if(!username.isEmpty() && !password.isEmpty()){
                     String operation = "insert";
-                    StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.106/E-doctor.php",
+                    StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -132,7 +138,20 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
-
-
+        showHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(hiddenPassword){
+                    Password.setTransformationMethod(null);
+                    showHide.setImageResource(R.drawable.ic_showpass);
+                    hiddenPassword=false;
+                }
+                else{
+                    Password.setTransformationMethod(new PasswordTransformationMethod());
+                    showHide.setImageResource(R.drawable.ic_hidepass);
+                    hiddenPassword=true;
+                }
+            }
+        });
     }
 }
