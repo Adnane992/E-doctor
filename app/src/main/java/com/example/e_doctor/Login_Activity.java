@@ -60,8 +60,15 @@ public class Login_Activity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                int user_id=0;
+                                if(response.contains("@")){
+                                    String[] Resp=response.split("@");
+                                    user_id=Integer.parseInt(Resp[1]);
+                                    response=Resp[0];
+                                }
                                 if (response.equals("success")) {
                                     Intent intent_connect = new Intent(Login_Activity.this, MainActivity2.class);
+                                    intent_connect.putExtra("user_id",user_id);
                                     startActivity(intent_connect);
                                     finish();
                                 }

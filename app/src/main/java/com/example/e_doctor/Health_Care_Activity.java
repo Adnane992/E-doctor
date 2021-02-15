@@ -33,8 +33,12 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +46,7 @@ public class Health_Care_Activity extends AppCompatActivity {
     RadioButton yes,no,def;
     int id=1,yes_id,no_id,default_id;
     Button next;
+    int user_id;
     ArrayList<Disease> list;
 
     public void Fetch(){
@@ -92,6 +97,7 @@ public class Health_Care_Activity extends AppCompatActivity {
         yes=findViewById(R.id.Choice1_HealthCare);
         def=findViewById(R.id.default_radio);
         no=findViewById(R.id.Choice2_HealthCare);
+        user_id=getIntent().getIntExtra("user_id",0);
         TextView question_txt=findViewById(R.id.question);
 
         StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
@@ -220,7 +226,38 @@ public class Health_Care_Activity extends AppCompatActivity {
                             builder_.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    ///// save the disease to the patient's diseaseHistory
+                                    DateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                    Date now=new Date();
+                                    String operation_="addToHistory";
+                                    StringRequest sr3=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    Log.i("history,response",response);
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    Log.e("history:error",error.toString());
+                                                }
+                                            }
+                                    ){
+                                        @Override
+                                        protected Map<String, String> getParams() {
+                                            Map<String,String> data=new HashMap<String,String>();
+                                            data.put("operation",operation_);
+                                            data.put("User",String.valueOf(user_id));
+                                            data.put("Disease",String.valueOf(_theDisease.Id));
+                                            data.put("Timestamp",format.format(now));
+                                            return data;
+                                        }
+                                    };
+                                    rq.add(sr3);
+                                    ///// redirect to main activity
                                     Intent intent=new Intent(Health_Care_Activity.this,MainActivity2.class);
+                                    intent.putExtra("user_id",user_id);
                                     startActivity(intent);
                                     finish();
                                 }
