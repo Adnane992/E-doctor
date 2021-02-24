@@ -4,125 +4,178 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#085394"
+    android:background="#3a0ca3"
     tools:context=".NotificationPane">
+
+    <EditText
+        android:id="@+id/drug_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="412dp"
+        android:backgroundTint="#e5e5e5"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="drug name"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="#8e9aaf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Alarm_Notif"
+        android:layout_width="239dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="172dp"
+        android:background="@drawable/radius_20"
+        android:backgroundTint="#002661"
+        android:text="Set reminder"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minute_Notif" />
+
+    <Button
+        android:id="@+id/deleteReminder"
+        android:layout_width="239dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="116dp"
+        android:background="@drawable/radius_20"
+        android:backgroundTint="#d40d3f"
+        android:text="Delete"
+        android:visibility="gone"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Alarm_Notif" />
 
     <EditText
         android:id="@+id/minute_Notif"
         android:layout_width="110dp"
         android:layout_height="44dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="344dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#e5e5e5"
         android:ems="10"
-        android:fontFamily="@font/archivo_black"
-        android:hint="Minute"
+        android:fontFamily="sans-serif-black"
+        android:hint="minute"
         android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_Notif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="480dp"
-        android:ems="10"
-        android:hint="Add your medicines "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2_Notif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="420dp"
-        android:backgroundTint="#002661"
-        android:text="My medicines"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toEndOf="@+id/button_Notif" />
-
-    <Button
-        android:id="@+id/button_Notif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
-        android:backgroundTint="#002661"
-        android:text="Add"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/divider_Notif"
-        android:layout_width="300dp"
-        android:layout_height="3dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3_Notif"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView3_Notif"
-        android:layout_width="375dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/abril_fatface"
-        android:text="Add your medicines "
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="36sp"
+        android:textColorHint="#8e9aaf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintTop_toBottomOf="@+id/dosage" />
 
     <EditText
         android:id="@+id/hour_Notif"
         android:layout_width="110dp"
         android:layout_height="44dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="344dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#e5e5e5"
         android:ems="10"
-        android:fontFamily="@font/archivo_black"
-        android:hint="Hour"
+        android:fontFamily="sans-serif-black"
+        android:hint="hour"
         android:inputType="time"
+        android:textAlignment="center"
+        android:textColorHint="#8e9aaf"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drug_name" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="344dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#e5e5e5"
+        android:fontFamily="sans-serif-black"
         android:text=":"
+        android:textColorHint="#E5E5E5"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/minute_Notif"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toEndOf="@+id/hour_Notif" />
 
-    <Button
-        android:id="@+id/Alarm_Notif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
-        android:backgroundTint="#002661"
-        android:text="Set Alarm"
-        app:cornerRadius="20dp"
+    <EditText
+        android:id="@+id/dosage"
+        android:layout_width="110dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="412dp"
+        android:backgroundTint="#e5e5e5"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="dosage"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textColor="#F1FAEE"
+        android:textColorHint="#8e9aaf"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toEndOf="@+id/drug_name" />
+
+    <View
+        android:id="@+id/divider_Notif"
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3_Notif"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="64dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:fontFamily="@font/baloo"
+        android:text="Meds list"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_Notif" />
+
+    <ImageButton
+        android:id="@+id/medsListB"
+        android:layout_width="26dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/ic_list" />
+
+    <TextView
+        android:id="@+id/textView3_Notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo"
+        android:text="Control your medicines "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

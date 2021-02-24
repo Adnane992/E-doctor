@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,8 +70,10 @@ public class Login_Activity extends AppCompatActivity {
                                 if (response.equals("success")) {
                                     Intent intent_connect = new Intent(Login_Activity.this, MainActivity2.class);
                                     intent_connect.putExtra("user_id",user_id);
+                                    intent_connect.putExtra("username",username);
+                                    Username.setText("");
+                                    Password.setText("");
                                     startActivity(intent_connect);
-                                    finish();
                                 }
                                 else{
                                     Toast.makeText(Login_Activity.this, response, Toast.LENGTH_SHORT).show();
@@ -80,7 +83,7 @@ public class Login_Activity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(Login_Activity.this,"Server error !!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login_Activity.this,"Server error !", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ){
@@ -115,7 +118,8 @@ public class Login_Activity extends AppCompatActivity {
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(Login_Activity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                                    Log.i("fetchMeds",error.toString());
+                                    Toast.makeText(Login_Activity.this,"Connection error !", Toast.LENGTH_SHORT).show();
                                 }
                             }
                     ){

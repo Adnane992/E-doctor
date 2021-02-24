@@ -12,14 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Health_Care_Activity"></activity>
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".NotificationPane" />
-        <activity android:name=".Medicament_Activity" />
-        <activity android:name=".About_Activity" />
-        <activity android:name=".Register_Activity" />
-        <activity android:name=".Login_Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Health_Care_Activity" android:launchMode="singleTop" />
+        <activity android:name=".MainActivity2" android:launchMode="singleTop" />
+        <activity android:name=".NotificationPane" android:launchMode="singleTop" />
+        <activity android:name=".Medicament_Activity" android:launchMode="singleTop" />
+        <activity android:name=".About_Activity" android:launchMode="singleTop" />
+        <activity android:name=".Register_Activity" android:launchMode="singleTop" />
+        <activity android:name=".Login_Activity" android:launchMode="singleTop" />
+        <activity android:name=".MainActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <receiver android:name=".ReminderBroadcast"/>
     </application>
 
 </manifest>

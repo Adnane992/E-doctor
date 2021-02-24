@@ -2,6 +2,7 @@ package com.example.e_doctor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -87,6 +88,7 @@ public class Health_Care_Activity extends AppCompatActivity {
         rq.add(sr);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +147,7 @@ public class Health_Care_Activity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent=new Intent(Health_Care_Activity.this,MainActivity2.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
                         finish();
                     }
@@ -222,6 +225,7 @@ public class Health_Care_Activity extends AppCompatActivity {
                             AlertDialog.Builder builder_=new AlertDialog.Builder(Health_Care_Activity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                             builder_.setTitle("Checkup results");
                             builder_.setIcon(R.drawable.ic_found);
+                            builder_.setCancelable(false);
                             builder_.setMessage("You might have : '" + _theDisease.Name + "'\n" + _theDisease.Description);
                             builder_.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -258,6 +262,7 @@ public class Health_Care_Activity extends AppCompatActivity {
                                     ///// redirect to main activity
                                     Intent intent=new Intent(Health_Care_Activity.this,MainActivity2.class);
                                     intent.putExtra("user_id",user_id);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                     startActivity(intent);
                                     finish();
                                 }

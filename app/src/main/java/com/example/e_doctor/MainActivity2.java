@@ -41,6 +41,8 @@ public class MainActivity2 extends AppCompatActivity {
         about4.setPaintFlags(about4.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         history=findViewById(R.id.history);
         user_id=getIntent().getIntExtra("user_id",0);
+        TextView welcome = findViewById(R.id.welcomeTxt);
+        welcome.setText("Hey, " + getIntent().getStringExtra("username"));
 
         Health_Care.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2=new Intent(MainActivity2.this,NotificationPane.class);
+                intent2.putExtra("user_id",user_id);
                 startActivity(intent2);
             }
         });
