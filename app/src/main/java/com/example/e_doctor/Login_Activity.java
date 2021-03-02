@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +36,7 @@ public class Login_Activity extends AppCompatActivity {
     EditText Username,Password;
     static boolean hiddenPassword=true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +64,19 @@ public class Login_Activity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
+                                Log.e("sessionid",response);
                                 int user_id=0;
+                                String SessionId;
                                 if(response.contains("@")){
                                     String[] Resp=response.split("@");
                                     user_id=Integer.parseInt(Resp[1]);
+                                    SessionId = Resp[2];
+                                    ////// saving sessionId locally /////
+                                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Login_Activity.this);
+                                    SharedPreferences.Editor prefs_editor = prefs.edit();
+                                    prefs_editor.putString("SessionId",SessionId);
+                                    prefs_editor.commit();
+                                    ////// saving sessionId locally /////
                                     response=Resp[0];
                                 }
                                 if (response.equals("success")) {
@@ -74,6 +86,7 @@ public class Login_Activity extends AppCompatActivity {
                                     Username.setText("");
                                     Password.setText("");
                                     startActivity(intent_connect);
+                                    finish();
                                 }
                                 else{
                                     Toast.makeText(Login_Activity.this, response, Toast.LENGTH_SHORT).show();

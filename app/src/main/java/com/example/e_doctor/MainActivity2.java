@@ -1,11 +1,19 @@
 package com.example.e_doctor;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +36,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     TextView about4;
     Button Health_Care,Reminder;
-    ImageButton history;
+    ImageButton history,logout;
     int user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,7 @@ public class MainActivity2 extends AppCompatActivity {
         about4=findViewById(R.id.about_Main);
         about4.setPaintFlags(about4.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         history=findViewById(R.id.history);
+        logout=findViewById(R.id.logoutB);
         user_id=getIntent().getIntExtra("user_id",0);
         TextView welcome = findViewById(R.id.welcomeTxt);
         welcome.setText("Hey, " + getIntent().getStringExtra("username"));
@@ -123,5 +132,38 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Toast.makeText(MainActivity2.this,response,Toast.LENGTH_SHORT).show();
+                                Intent logout = new Intent(MainActivity2.this,Login_Activity.class);
+                                startActivity(logout);
+                                finish();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("logout:error",error.toString());
+                            }
+                        }
+                ){
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String,String> data=new HashMap<String,String>();
+                        data.put("operation","Logout");
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity2.this);
+                        data.put("SessionId",prefs.getString("SessionId","none"));
+                        return data;
+                    }
+                };
+                RequestQueue rq= Volley.newRequestQueue(MainActivity2.this);
+                rq.add(sr);
+            }
+        });
     }
 }

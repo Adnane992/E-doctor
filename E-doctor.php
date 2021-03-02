@@ -24,7 +24,7 @@ else{
         $conn->close();
     }
     else if($_POST['operation']=="login"){
-        $statement=$conn->prepare("SELECT * FROM Users WHERE `Username` LIKE ? AND `Password` LIKE ?");
+        $statement=$conn->prepare("SELECT * FROM Users WHERE `Username` = ? AND `Password` = ?");
         $statement->bind_param('ss',$username,$password);
         
         $username=$_POST['username'];
@@ -35,12 +35,36 @@ else{
         if($statement->num_rows() != 0){
             $statement->bind_result($id,$un,$pass);
             $statement->fetch();
-            echo 'success@'.strval($id);
+            session_start();
+            $session['UserId'] = $id;
+            $session = session_id();
+            $sql = $conn->prepare("INSERT INTO Sess(`id`,`UserId`,`Username`) VALUES(?,?,?)");
+            $sql->bind_param('sis',$session,$id,$username);
+            if($sql->execute()) echo 'success@'.strval($id).'@'.session_id();
+            else echo 'problem faced establishing session';
+            session_destroy();
         }
         else echo 'incorrect input';
         
         $statement->close();
         $conn->close();
+    }
+    else if($_POST['operation']=="SessionIdVerification"){
+        $statement=$conn->prepare("SELECT * FROM Sess WHERE `id` = ?");
+        $statement->bind_param('s',$_POST['SessionId']);
+        if($statement->execute()){
+            $statement->bind_result($id,$userid,$username);
+            if($statement->fetch() != null) echo strval($userid).'@'.$username;
+            else echo 'null';
+        }
+        else echo 'false';
+    }
+    else if($_POST['operation']=="Logout"){
+        $session = $_POST['SessionId'];
+        $sql = $conn->prepare("DELETE FROM Sess WHERE `id` = ?");
+        $sql->bind_param('s',$session);
+        if($sql->execute()) echo 'Logout successful';
+        else echo 'Logout failed';
     }
     else if($_POST['operation']=="qsts"){
         $id=intval($_POST['id']);
@@ -94,6 +118,64 @@ else{
         else echo 'empty';
         $conn->close();
     }
+    else if($_POST['operation']=="setReminder"){
+        $statement=$conn->prepare("INSERT INTO Medicines(`User`,`Name`,`Hours`,`Minutes`,`Dosage`,`Status`) VALUES(?,?,?,?,?,?)");
+        $statement->bind_param('isiidi',$user,$name,$hours,$minutes,$dosage,$status);
+        $user=intval($_POST['User']);
+        $name=$_POST['Name'];
+        $hours=intval($_POST['Hours']);
+        $minutes=intval($_POST['Minutes']);
+        $dosage=floatval($_POST['Dosage']);
+        $status=0;
+        if($statement->execute()) echo "medicine inserted";
+        else echo 'error while inserting medicine';
+    }
+    else if($_POST['operation']=="fetchMeds"){
+        $user=intval($_POST['User']);
+        $sql="SELECT * FROM Medicines WHERE Medicines.User = $user";
+        $result=$conn->query($sql);
+        if(mysqli_num_rows($result) != 0){
+            echo mysqli_num_rows($result).'@';
+            while($row=$result->fetch_row()) echo $row[0].'@';
+            mysqli_data_seek($result,0);
+            while($row=$result->fetch_row()) echo $row[2].'@';
+            mysqli_data_seek($result,0);
+            while($row=$result->fetch_row()) echo $row[3].'@';
+            mysqli_data_seek($result,0);
+            while($row=$result->fetch_row()) echo $row[4].'@';
+            mysqli_data_seek($result,0);
+            while($row=$result->fetch_row()) echo $row[5].'@';
+            mysqli_data_seek($result,0);
+            while($row=$result->fetch_row()) echo $row[6].'@';
+        }
+        else echo 'empty';
+        $conn->close();
+    }
+    else if($_POST['operation']=="updateMed"){
+        $name=$_POST['Name'];
+        $hours=intval($_POST['Hours']);
+        $minutes=intval($_POST['Minutes']);
+        $dosage=floatval($_POST['Dosage']);
+        $id=intval($_POST['Id']);
 
-    
+        $statement=$conn->prepare("UPDATE Medicines SET Medicines.Name=?, Medicines.Hours=?, Medicines.Minutes=?, Medicines.Dosage=? WHERE Medicines.Id=?");
+        $statement->bind_param('siidi',$name,$hours,$minutes,$dosage,$id);
+        if($statement->execute()) echo 'Item updated';
+        else echo 'Could not update item';
+        $statement->close();
+        $conn->close();
+    }
+    else if($_POST['operation']=="delReminder"){
+        $id=$_POST['Id'];
+        $sql="DELETE FROM Medicines WHERE `Id`=$id";
+        if($conn->query($sql)) echo "Reminder removed";
+        else "Could not remove this reminder";
+    }
+    else if($_POST['operation']=="updateStatus"){
+        $id=intval($_POST['Id']);
+        $status=intval($_POST['Status']);
+        $sql="UPDATE Medicines SET Medicines.Status=$status WHERE `Id`=$id";
+        if($conn->query($sql)) echo "Status updated";
+        else "Status not updated";
+    }
 }
