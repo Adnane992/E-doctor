@@ -20,20 +20,23 @@ public class ReminderBroadcast extends BroadcastReceiver {
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setContentTitle(intent.getStringExtra("Name"));
         builder.setContentText("Dosage : "+intent.getStringExtra("Dosage"));
-        builder.setGroup("edoc");
+        builder.setGroup(intent.getStringExtra("username"));
         //////////////////////
         NotificationCompat.Builder summary=new NotificationCompat.Builder(context,"ch1");
         summary.setSmallIcon(R.mipmap.ic_launcher);
-        summary.setGroup("edoc");
+        summary.setGroup(intent.getStringExtra("username"));
         summary.setGroupSummary(true);
         summary.setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_ALL);
+        summary.setStyle(new NotificationCompat.InboxStyle()
+                .setSummaryText("for : " + intent.getStringExtra("username"))
+        );
         /////////////////////
         NotificationManagerCompat nmc = NotificationManagerCompat.from(context);
         nmc.notify(-1,summary.build());
         nmc.notify(intent.getIntExtra("id",0),builder.build());
     }
 
-    static public void setAlarm(Context c ,int position,int Hour,int Minute,String Name,String Dosage){
+    static public void setAlarm(String username,Context c ,int position,int Hour,int Minute,String Name,String Dosage){
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY,Hour);
         calendar.set(Calendar.MINUTE,Minute);
@@ -44,6 +47,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
         intent.putExtra("Name",Name);
         intent.putExtra("Dosage",Dosage);
         intent.putExtra("id",position);
+        intent.putExtra("username",username);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(c,position,intent,0);
         am.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
     }

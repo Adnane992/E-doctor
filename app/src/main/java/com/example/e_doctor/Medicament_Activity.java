@@ -102,11 +102,11 @@ public class Medicament_Activity extends AppCompatActivity {
                             }
                             for(i=0;i<num_rows;i++) Log.i("status",Status.get(i));
                             ///// call a function to create medicines list ui
-                            Adap medListAdapter = new Adap(Medicament_Activity.this,Ids,Names,Dosages,Hours,Minutes,Status);
+                            Adap medListAdapter = new Adap(getIntent().getStringExtra("username"),Medicament_Activity.this,Ids,Names,Dosages,Hours,Minutes,Status);
                             medsList.setAdapter(medListAdapter);
                             /// create notifications for enabled reminders at activity start
                             for (i=0;i<medsList.getCount();i++){
-                                ReminderBroadcast.setAlarm(Medicament_Activity.this,i,Integer.parseInt(Hours.get(i)),Integer.parseInt(Minutes.get(i)),Names.get(i),Dosages.get(i));
+                                ReminderBroadcast.setAlarm(getIntent().getStringExtra("username"),Medicament_Activity.this,i,Integer.parseInt(Hours.get(i)),Integer.parseInt(Minutes.get(i)),Names.get(i),Dosages.get(i));
                             }
                             //// set on item click listener
                             medsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -157,10 +157,12 @@ public class Medicament_Activity extends AppCompatActivity {
 class Adap extends ArrayAdapter<String>{
 
     Context c;
+    String username;
     ArrayList<String> Names,Dosages,Hours,Minutes,Status,Ids;
 
-    Adap(Context c,ArrayList<String> Ids, ArrayList<String> Names, ArrayList<String> Dosages, ArrayList<String> Hours,ArrayList<String> Minutes,ArrayList<String> Status){
+    Adap(String username,Context c,ArrayList<String> Ids, ArrayList<String> Names, ArrayList<String> Dosages, ArrayList<String> Hours,ArrayList<String> Minutes,ArrayList<String> Status){
         super(c,R.layout.customlistview,R.id.medName,Names);
+        this.username=username;
         this.c=c;
         this.Ids=Ids;
         this.Names=Names;
@@ -226,7 +228,7 @@ class Adap extends ArrayAdapter<String>{
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(c,position,intent,0);
                     am.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);*/
 
-                    ReminderBroadcast.setAlarm(c,position,Integer.parseInt(Hours.get(position)),Integer.parseInt(Minutes.get(position)),Names.get(position),Dosages.get(position));
+                    ReminderBroadcast.setAlarm(username,c,position,Integer.parseInt(Hours.get(position)),Integer.parseInt(Minutes.get(position)),Names.get(position),Dosages.get(position));
                     status="1";
                 }
                 else{

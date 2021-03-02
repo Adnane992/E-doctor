@@ -8,11 +8,14 @@ import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -67,6 +70,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2=new Intent(MainActivity2.this,NotificationPane.class);
                 intent2.putExtra("user_id",user_id);
+                intent2.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent2);
             }
         });
@@ -135,34 +139,56 @@ public class MainActivity2 extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Toast.makeText(MainActivity2.this,response,Toast.LENGTH_SHORT).show();
-                                Intent logout = new Intent(MainActivity2.this,Login_Activity.class);
-                                startActivity(logout);
-                                finish();
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("logout:error",error.toString());
-                            }
-                        }
-                ){
+                /*ProgressDialog pd=new ProgressDialog(MainActivity2.this);
+                pd.setTitle("Login");
+                pd.setMessage("please wait while we log you in");
+                pd.setCancelable(false);
+                pd.show();
+                SystemClock.sleep(3000);
+                pd.dismiss();*/
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity2.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+                builder.setTitle("Data collision error");
+                builder.setIcon(R.drawable.ic_error);
+                builder.setMessage("The app does not support multiple users yet , so please be sure to delete all your reminders before logout , so they do not interfere with other users'");
+                builder.setPositiveButton("Already done", new DialogInterface.OnClickListener() {
                     @Override
-                    protected Map<String, String> getParams() {
-                        Map<String,String> data=new HashMap<String,String>();
-                        data.put("operation","Logout");
-                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity2.this);
-                        data.put("SessionId",prefs.getString("SessionId","none"));
-                        return data;
+                    public void onClick(DialogInterface dialog, int which) {
+                        StringRequest sr=new StringRequest(Request.Method.POST, "http://192.168.1.107/E-doctor.php",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        if(response.equals("Logout successful")){
+                                            Intent logout = new Intent(MainActivity2.this,Login_Activity.class);
+                                            startActivity(logout);
+                                            finish();
+                                        }
+                                        Toast.makeText(MainActivity2.this,response,Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Log.e("logout:error",error.toString());
+                                    }
+                                }
+                        ){
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String,String> data=new HashMap<String,String>();
+                                data.put("operation","Logout");
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity2.this);
+                                data.put("SessionId",prefs.getString("SessionId","none"));
+                                return data;
+                            }
+                        };
+                        RequestQueue rq= Volley.newRequestQueue(MainActivity2.this);
+                        rq.add(sr);
                     }
-                };
-                RequestQueue rq= Volley.newRequestQueue(MainActivity2.this);
-                rq.add(sr);
+                });
+                builder.setNegativeButton("Cancel",null);
+                AlertDialog logout_dialog=builder.create();
+                logout_dialog.show();
             }
         });
     }

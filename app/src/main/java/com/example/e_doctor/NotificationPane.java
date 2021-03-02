@@ -76,10 +76,11 @@ public class NotificationPane extends AppCompatActivity  {
 
                                             int position = getIntent().getIntExtra("Position",0);
                                             ReminderBroadcast.removeAlarm(NotificationPane.this,position);
-                                            ReminderBroadcast.setAlarm(NotificationPane.this,position,heur,min,drug.getText().toString().trim(),dos.getText().toString());
+                                            ReminderBroadcast.setAlarm(getIntent().getStringExtra("username"),NotificationPane.this,position,heur,min,drug.getText().toString().trim(),dos.getText().toString());
                                             Toast.makeText(NotificationPane.this,"Reminder updated",Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(NotificationPane.this,Medicament_Activity.class);
                                             intent.putExtra("user_id",user_id);
+                                            intent.putExtra("username",getIntent().getStringExtra("username"));
                                             startActivity(intent);
                                             finish();
                                         }
@@ -229,6 +230,7 @@ public class NotificationPane extends AppCompatActivity  {
             public void onClick(View v) {
                 Intent intent=new Intent(NotificationPane.this,Medicament_Activity.class);
                 intent.putExtra("user_id",user_id);
+                intent.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent);
             }
         });
